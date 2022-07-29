@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import CarsGrid from './CarsGrid'
-
-
+import { filterArray, orderArray } from './filterArray'
 
 
 export default function Home() {
@@ -12,33 +11,18 @@ export default function Home() {
     const [isOrderOpen, setIsOrderOpen] = useState(false)
     const [order, setOrder] = useState('default')
 
-    const filterArray = [
-        { text: 'Todos', category: 'all' },
-        { text: 'Autos', category: 'cars' },
-        { text: 'Pickups y Comerciales', category: 'pickups' },
-        { text: 'SUVs y Crossovers', category: 'suvs' }
-    ]
-    const orderArray = [
-        { text: 'Nada', category: 'default' },
-        { text: 'De menor a mayor precio', category: 'minorPrice' },
-        { text: 'De mayor a menor precio', category: 'biggerPrice' },
-        { text: 'Más nuevos primero', category: 'newer' },
-        { text: 'Más viejos primero', category: 'older' }
-    ]
-
-
     function handleFilter(category) {
         setfilter(category)
         setIsFilterOpen(false)
     }
+
     function handleOrder(category) {
         setOrder(category)
         setIsOrderOpen(false)
     }
 
-
     return (
-        <div className='w-full mx-auto px-8 max-w-screen-2xl'>
+        <div className='w-full mx-auto px-8 max-w-screen-2xl HOME'>
             <div className='size text-4xl md:text-[55px] md:leading-[4rem] font-bold text-[#373737] mt-12 md:mt-20'>
                 <h1>Descubrí todos los modelos </h1>
             </div>
@@ -78,9 +62,7 @@ export default function Home() {
                 </div>
             </div>
             {/*  */}
-            <CarsGrid />
-
-
+            <CarsGrid filter={filter} order={order} />
         </div>
     )
 }

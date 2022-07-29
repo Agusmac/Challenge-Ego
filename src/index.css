@@ -11,6 +11,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App{
+  position: relative;
+}
+
+.HOME{
+  min-height: calc(100vh - 198px) ;
+}
+
 .NAVMENU{
   transition: 0.8s ;
 }
