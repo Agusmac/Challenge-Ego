@@ -4,6 +4,10 @@ export default function SingleCar({ thumbnail, name, price, year }) {
 
   const [hovered, setHovered] = useState(false)
 
+
+
+// add points to the price, use a package
+
   return (
     <div className='w-[300px]' onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <div className='relative -mb-10'>
