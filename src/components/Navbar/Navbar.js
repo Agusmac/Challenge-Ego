@@ -9,7 +9,7 @@ export default function Navbar({ isHome }) {
     const Hamburguer = "/icon-hamburger-2.svg"
 
     return (
-        <div className='flex border-b border-[#CCCCCC] w-full h-[70px] items-center justify-between'>
+        <div className='flex border-b bg-white border-[#CCCCCC] w-full h-[70px] items-center justify-between sticky top-0 md:relative z-10 '>
             <div className='flex mx-8 items-center'>
                 <Link to={'/'}><img src="/ego-logo.svg" alt="" className='h-10 w-10 ' /></Link>
                 <div className='hidden md:flex ml-20 font-semibold'>
