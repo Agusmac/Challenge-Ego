@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function NavMenu({ setIsOpen, isOpen }) {
+
     const Cross = "/icon-close.svg"
 
     const Links = {
@@ -20,20 +22,20 @@ export default function NavMenu({ setIsOpen, isOpen }) {
                 </div>
 
                 <div className='md:mt-4  p-9 py-6 md:py-8 space-y-3 border-b border-[#E9E9E9]'>
-                    {Links.a.map((item, i) => <h4 key={i} className='cursor-pointer'>{item}</h4>)}
+                    {Links.a.map((item, i) => <Link key={i} to={'/'}><h4  onClick={() => setIsOpen(false)}  className='cursor-pointer'>{item}</h4></Link>)}
                 </div>
 
-                <div className=' p-9 py-6 md:py-8 space-y-3 border-b border-[#D1D1D1]'>
-                    {Links.b.map((item, i) => <h4 key={i} className='cursor-pointer'>{item}</h4>)}
+                <div className='p-9 py-6 md:py-8 space-y-3 border-b border-[#D1D1D1]'>
+                    {Links.b.map((item, i) => <Link key={i} to={'/'}><h4  onClick={() => setIsOpen(false)} className='cursor-pointer'>{item}</h4></Link>)}
                 </div>
 
                 <div className='p-9 py-6 md:py-8 space-y-3 '>
-                    {Links.c.map((item, i) => <h4 key={i} className='cursor-pointer'>{item}</h4>)}
+                    {Links.c.map((item, i) => <Link key={i} to={'/'}><h4  onClick={() => setIsOpen(false)}  className='cursor-pointer'>{item}</h4></Link>)}
                 </div>
             </div>
             <div className='bg-[#EFEEEF] px-9'>
                 <div className=' px-9 pt-6 md:pt-8 space-y-3 pb-80 '>
-                    {Links.d.map((item, i) => <h4 key={i} className='cursor-pointer'>{item}</h4>)}
+                    {Links.d.map((item, i) => <Link key={i} to={'/'}><h4  onClick={() => setIsOpen(false)} className='cursor-pointer'>{item}</h4></Link>)}
                 </div>
             </div>
         </div>

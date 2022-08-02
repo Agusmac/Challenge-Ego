@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { filterer, orderer, } from './filterer';
+import { filterer, orderer, } from './helpers/filterer';
 import SingleCar from './SingleCar';
-import { testArray } from './testArray';
+import { testArray } from './helpers/testArray';
 
 export default function CarsGrid({ filter, order }) {
 
