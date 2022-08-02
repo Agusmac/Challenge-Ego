@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { addCommas } from './helpers/addCommas';
 
 
- {/* setting the height on the img div allows me to center the img without using flex box
-       on the whole car div (this solution gave a couple problems, and the solutions were too lenghty)
+{/* setting the height on the img div allows me to center the img without using flex box
+       on the whole car div (the flexbox solution gave a couple problems, and the solutions were too lenghty)
        this probably won't work correctly if the api gets bigger images
       */}
 
@@ -13,18 +13,13 @@ export default function SingleCar({ thumbnail, name, price, year, id }) {
 
   const [hovered, setHovered] = useState(false)
 
-  useEffect(() => {
-    setHovered(false)
-  }, [])
-
-
   return (
     <div className='w-[300px]' onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <div className='relative -mb-10'>
         <h3 className={`text-3xl font-semibold mb-2  ${hovered && 'text-red-600'}`}>{name}</h3>
         <p>{`${year} | $ ${addCommas(price)}`}</p>
       </div>
-     
+
       <div className='flex items-center h-[225px]'>
         <img className='' src={thumbnail} alt={name} />
       </div>

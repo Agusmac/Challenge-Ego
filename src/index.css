@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* *{outline: 1px solid;} */
-
-
 body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,16 +16,10 @@ body {
   min-height: calc(100vh - 198px) ;
 }
 
-.NAVMENU{
-  transition: 0.8s ;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
 }

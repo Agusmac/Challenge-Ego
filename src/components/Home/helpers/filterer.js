@@ -1,5 +1,7 @@
 // i should probably refactor this
 
+// [...array] was used to avoid issues of react not re-rendering the grid
+
 export function filterer(array, category) {
     if (category === 'cars') return [...array].filter(car => car.segment === 'Sedan' || car.segment === 'Hatchback');
     if (category === 'pickups') return [...array].filter(car => car.segment === 'Pickups y Comerciales');

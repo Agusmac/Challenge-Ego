@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function NavMenu({ setIsOpen, isOpen }) {
 
-    const Cross = "/icon-close.svg"
+    const Cross = "/icon-close-2.svg"
 
     const Links = {
         a: ['Modelos', 'Servicios y Accesorios', 'Financiación', 'Reviews y Comunidad'],

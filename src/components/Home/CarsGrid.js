@@ -7,6 +7,7 @@ export default function CarsGrid({ filter, order }) {
 
     // comment this out & uncomment the two lines below to test the order by year functionality
 
+    // 
     const [cars, setCars] = useState([])
     const [fullList, setFullList] = useState([])
 
@@ -18,13 +19,12 @@ export default function CarsGrid({ filter, order }) {
                 setFullList(cars)
             });
     }, [])
-
     // 
 
     // const [cars, setCars] = useState(testArray)
     // const [fullList, setFullList] = useState(testArray)
 
-    
+
     useEffect(() => {
         let tempArray = fullList
         if (filter !== 'all') tempArray = filterer(fullList, filter);

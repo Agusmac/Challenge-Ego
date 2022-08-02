@@ -1,5 +1,6 @@
 
 // i took the array from the endpoint and changed the years so the order by year functionality works
+// the app still uses the endpoint but feel free to change to this data to test it
 
 export const testArray = [
     {
