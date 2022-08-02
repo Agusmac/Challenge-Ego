@@ -1,177 +1,68 @@
 
+import React, { useEffect, useState } from 'react'
+import { CarouselData } from './CarouselData'
 
 
+export default function Carousel({ }) {
 
+  // i removed the props to use invented data
 
-// import React, { useEffect, useState } from 'react'
+  const [currentItem, setCurrentItem] = useState(0)
 
-// export default function Carousel({ model_features }) {
-
-
-
-//   const [data, setdata] = useState(0)
-
-
-//   useEffect(() => {
-//     setTimeout(() => {
-//       setdata(-1500)
-//     }, 3000);
-//   }, [])
-
-//   return (
-//     <div className='bg-sky-100 flex overflow-hidden gap-10 duration-1000'>
-//       {temp.map((item, i) =>
-//       <div className='w-[250px] duration-1000 overflow-scroll'>
-//         <img className='rounded-lg    w-[250px] duration-1000 ' style={{ transform: `translateX(${data}px)` }} src={model_features?.[0].image} alt="" />
-//         </div>
-//       )}
-//     </div>
-//   )
-// }
-
-
-
-import { useState, useRef, useEffect } from 'react';
-
-// Data
-const temp = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-
-const Carousel = ({ model_features }) => {
-
-
- 
-  const maxScrollWidth = useRef(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carousel = useRef(null);
-
-  const movePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevState) => prevState - 1);
+  function nextCard() {
+    if ((currentItem + 1) > (CarouselData.length - 1)) {
+      setCurrentItem(0)
+    } else {
+      setCurrentItem((prev) => prev + 1)
     }
-  };
-
-  const moveNext = () => {
-    if (
-      carousel.current !== null &&
-      carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
-    ) {
-      setCurrentIndex((prevState) => prevState + 1);
+  }
+  function prevCard() {
+    if ((currentItem + -1) < 0) {
+      setCurrentItem(CarouselData.length - 1)
+    } else {
+      setCurrentItem((prev) => prev - 1)
     }
-  };
+  }
 
-  const isDisabled = (direction) => {
-    if (direction === 'prev') {
-      return currentIndex <= 0;
-    }
-
-    if (direction === 'next' && carousel.current !== null) {
-      return (
-        carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-      );
-    }
-
-    return false;
-  };
 
   useEffect(() => {
-    if (carousel !== null && carousel.current !== null) {
-      carousel.current.scrollLeft = carousel.current.offsetWidth * currentIndex;
-    }
-  }, [currentIndex]);
-
-  useEffect(() => {
-    maxScrollWidth.current = carousel.current
-      ? carousel.current.scrollWidth - carousel.current.offsetWidth
-      : 0;
-  }, []);
+    document.getElementById(currentItem).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+    console.log(currentItem)
+  }, [currentItem])
 
   return (
-    <div className="carousel my-12 mx-auto">
-      <h2 className="text-4xl leading-8 font-semibold mb-12 text-slate-700">
-        Our epic carousel
-      </h2>
-      <div className="relative overflow-hidden">
-        <div className="flex justify-between absolute top left w-full h-full">
-          <button
-            onClick={movePrev}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-            disabled={isDisabled('prev')}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-20 -ml-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            <span className="sr-only">Prev</span>
-          </button>
-          <button
-            onClick={moveNext}
-            className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-            disabled={isDisabled('next')}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-20 -ml-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-            <span className="sr-only">Next</span>
-          </button>
+    <div className='bg-gray-200 py-12 '>
+      <div className='relative flex'>
+        <div className='bg-gray-200 opacity-70 hidden md:flex cursor-pointer px-1' onClick={prevCard}>
+          <div className='pt-28 w-7'><img src="/chevron-left.svg" alt="" className='h-7 w-7' /></div>
         </div>
-        <div
-          ref={carousel}
-          className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
-        >
-          {temp.map((resource, index) => {
-            return (
-              <div
-                key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start"
-              >
-                <a
-                  href={model_features?.[0].image}
-                  className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                  style={{ backgroundImage: `url(${model_features?.[0].image || ''})` }}
-                >
-                  <img
-                    src={model_features?.[0].image || ''}
-                    alt={model_features?.[0].image}
-                    className="w-full aspect-square hidden"
-                  />
-                </a>
-                <a
-                  href={model_features?.[0].image}
-                  className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
-                >
-                  <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                    {model_features?.[0].image}
-                  </h3>
-                </a>
+        <div className='flex overflow-x-scroll duration-1000 no-scrollbar px-8'>
+          {CarouselData.map((item, index) =>
+            <div key={index} id={index} className='min-w-[300px] md:min-w-[350px] duration-1000 pl-7' >
+              <div className=''>
+                <img className='rounded-lg md:w-[350px] duration-1000 ' src={item?.image} alt="" />
+                <h5 className='font-semibold mt-4 mb-3 text-lg'>{item.name}</h5>
+                <p>{item.description}</p>
               </div>
-            );
-          })}
+            </div>
+          )}
         </div>
+        <div className='bg-gray-200 opacity-70 hidden md:flex cursor-pointer px-1' onClick={nextCard}>
+          <div className='pt-28 w-7'><img src="/chevron-right.svg" alt="" className='h-7 w-7' /></div>
+        </div>
+        {/* <div className='absolute inset-0 hidden md:flex justify-between'>
+            <div className='bg-gray-200 opacity-100 flex items-center px-2'>abc</div>
+            <div className='bg-gray-200 opacity-100 flex items-center px-2'>abc</div>
+          </div> */}
+
+      </div>
+      <div className='flex mx-auto mt-7 w-full justify-evenly px-5 md:justify-center space-x-3 md:space-x-8'>
+        {CarouselData.map((item, index) =>
+          <div key={index} onClick={() => setCurrentItem(index)} className={`duration-300 cursor-pointer ${currentItem == index ? 'w-14 bg-gray-400' : 'w-4 bg-gray-300'} h-4 rounded-full `}></div>
+        )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Carousel;
 

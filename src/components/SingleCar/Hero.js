@@ -3,7 +3,7 @@ import { stripHtml } from './helpers/stripHtml';
 
 export default function Hero({ photo, name, title, description }) {
     return (
-        <div className='flex min-h-[400px] flex-col  md:flex-row gap-x-10 max-w-screen-2xl mx-auto px-8 mb-16'  >
+        <div className='flex min-h-[400px] flex-col  md:flex-row gap-x-10 max-w-screen-2xl mx-auto px-8 mb-12'  >
             <div className='flex-1 grid place-content-center'>
                 <img className='md:min-h-[300px]' src={photo} alt={name} />
             </div>
