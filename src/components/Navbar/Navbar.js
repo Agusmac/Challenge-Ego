@@ -8,6 +8,9 @@ export default function Navbar({ isHome }) {
 
     const Hamburguer = "/icon-hamburger-2.svg"
 
+    // the design causes some small issues on mobile, which are not fixable without changing it 
+    // (to do so the expanded navMenu should be over the navbar as it was on desktop)
+
     return (
         <div className='flex border-b bg-white border-[#CCCCCC] w-full h-[70px] items-center justify-between sticky top-0 md:relative z-10 '>
             <div className='flex mx-8 items-center'>
