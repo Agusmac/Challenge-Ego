@@ -54,7 +54,7 @@ export default function Carousel({ }) {
         </div>
       </div>
 
-      <div className='flex mx-auto mt-7 w-full justify-evenly px-5 md:justify-center space-x-3 md:space-x-8'>
+      <div className='flex mx-auto mt-7 w-full justify-evenly px-5 md:justify-center space-x-2 md:space-x-8'>
         {CarouselData.map((item, index) =>
           <div key={index} onClick={() => setCurrentItem(index)} className={`duration-300 cursor-pointer ${currentItem == index ? 'w-14 bg-gray-400' : 'w-4 bg-gray-300'} h-4 rounded-full `}></div>
         )}

@@ -19,7 +19,7 @@ export default function Navbar({ isHome }) {
             </div>
             <div className='flex mx-8 items-center space-x-5'>
                 <h5 className='hidden md:block'>Menu</h5>
-                <img src={Hamburguer} className={`h-7  cursor-pointer`} alt="icon" onClick={() => setIsOpen(!isOpen)} />
+                <img src={Hamburguer} className={`h-7 cursor-pointer`} alt="icon" onClick={() => setIsOpen(!isOpen)} />
                 <NavMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
         </div>
